@@ -1,12 +1,15 @@
 function runMission(missionName)
+    % add the path for the scenarios 
+    addpath('../../scenarios/')
+    
     % Load the mission data from the provided filename 
     missionData = load(missionName);
 
     %create a struct to store results 
-    handles.myhandle = missionData.myhandle 
+    handles.myhandle = missionData.myhandle;
 
     % Degine the csv output path 
-    csv_path = '/Users/edu/Desktop/Specification-Learning/nominal_traces/';
+    csv_path = '../../nominal_traces/)';
 
     % Get the position matrixes and robustness 
     [handles.myhandle.w_opt, handles.myhandle.optParams, handles.myhandle.time_taken] = planMission(handles.myhandle);
@@ -19,7 +22,8 @@ function runMission(missionName)
     N_drones = handles.myhandle.optParams.N_drones;
     trace = [];
     for drone = 1:N_drones
-        trace = [trace, xx(:, drone), yy(:, drone), zz(:, drone)];
+        %rob_column = repmat(-negative_rob, size(xx,1), 1);
+        trace = [trace, xx(:, drone), yy(:, drone), zz(:, drone)]; %[rob_column]
     end
     % Include time in the trace
     trace = horzcat(t, trace);

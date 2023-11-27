@@ -1,4 +1,5 @@
 dd = load('patrol.mat');
+d_min = dd.myhandle.d_min; 
 handles.myhandle = dd.myhandle;
 
 
@@ -19,7 +20,11 @@ rob = -negative_rob;
 
 time = handles.myhandle.Horizon;
 t = linspace(0, time, size(xx,1))';
+disp(N_drones);
 for drone = 1:N_drones
        trace = [trace, xx(:, drone), yy(:, drone), zz(:, drone)];
 end
 trace = horzcat(t, trace);
+goals = handles.myhandle.goal; 
+obs = handles.myhandle.obs; 
+

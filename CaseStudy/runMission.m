@@ -1,4 +1,4 @@
-function runMission(missionName)
+function [trace] = runMission(missionName)
     % add the path for the scenarios 
     addpath('../../scenarios/')
     

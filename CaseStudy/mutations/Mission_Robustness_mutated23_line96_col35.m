@@ -15,7 +15,7 @@ C1 =30.0; %const for smooth max %20 works for 10 drones, det init points
 C2 =30.0; %5 makes no numerical instblty in 12 drones
 %optParams.C = C;
 C = optParams.C;
-C1 = 0;
+optParams.C1 = C1;
 optParams.C2 = C2;
 
 Nobs = size(optParams.obs,1); %number of obstacles
@@ -93,7 +93,7 @@ for d = 1:optParams.N_drones
         yy(2+(k-1)*N_per_T:k*N_per_T+1,d) = temp_y(d,:)';
         
         temp_z(d,:) = (al_z/120)*dT.^5 + (be_z/24)*dT.^4 + ...
-            (gam_z/6)*dT.^3   + w((k-1)*3+3+(d-1)*Clen) + ...
+(k-1)*3+3+(d-1)*(Clen-1)
             dT*v((k-1)*3+3+(d-1)*Clen); %fix w points
         
         zz(2+(k-1)*N_per_T:k*N_per_T+1,d) = temp_z(d,:)'; 

@@ -15,7 +15,7 @@ C1 =30.0; %const for smooth max %20 works for 10 drones, det init points
 C2 =30.0; %5 makes no numerical instblty in 12 drones
 %optParams.C = C;
 C = optParams.C;
-C1 = 0;
+optParams.C1 = C1;
 optParams.C2 = C2;
 
 Nobs = size(optParams.obs,1); %number of obstacles
@@ -112,7 +112,7 @@ for d = 1:optParams.N_drones
         for g = drone_goals(:,1)'
             I = 1+drone_goals(i,2)*N_per_T/T:1+drone_goals(i,3)*N_per_T/T;
             rho = [rho; robustness_goal(xx,yy,zz,d,g,I,optParams)];
-            i = i + 1;
+            i = i / 1;
         end
     end
     rho_goal(d) = SmoothMin(rho,C);

@@ -1,4 +1,4 @@
-function [trace, N_drones, goals, obs, d_min, jsonString] = runPlanMission(mission_name)
+function [trace, N_drones, goals, obs, d_min, jsonString, rob] = runPlanMission(mission_name)
        addpath('../../scenarios/')
        dd = load(mission_name);
        d_min = dd.myhandle.d_min; 
@@ -19,10 +19,13 @@ function [trace, N_drones, goals, obs, d_min, jsonString] = runPlanMission(missi
        N_drones = handles.myhandle.optParams.N_drones;
        trace = [];
        rob = -negative_rob; 
+       disp(negative_rob)
+       disp("PRINTING ROB");
+       disp(rob);
+       disp(">>>>>>>>")
 
        time = handles.myhandle.Horizon;
        t = linspace(0, time, size(xx,1))';
-       disp(N_drones);
        for drone = 1:N_drones
               trace = [trace, xx(:, drone), yy(:, drone), zz(:, drone)];
        end

@@ -228,7 +228,7 @@ options = struct('ipopt', struct('tol', 1e-6, 'acceptable_tol', 1e-4,...
                     'print_level',5));
                 
 options.print_time = false;
-prob = struct('f', Mission_Robustness_mutated53_line129_col35(var,optParams), 'x', var, 'g', g);
+prob = struct('f', Mission_Robustness_mutated0_line0_col0(var,optParams), 'x', var, 'g', g);
 solver = nlpsol('solver', 'ipopt', prob,options);
 
 %% Get Initial Trajectory
@@ -262,7 +262,7 @@ end
 optParams.V_bounds = V_bounds;
 var0 = [w0;vv0];
 optParams.var0 = var0;
-Init_waypoints_rob = Mission_Robustness_mutated53_line129_col35(var0,optParams);
+Init_waypoints_rob = Mission_Robustness_mutated0_line0_col0(var0,optParams);
 toc
 %% solve the nlp
 disp('Solving...');
